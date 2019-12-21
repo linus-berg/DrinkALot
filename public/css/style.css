@@ -1,0 +1,88 @@
+
+#wrapper {
+  padding-top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#mixer_wrap {
+  width: 35vw;
+  padding: 1.2rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(80, 18, 83, 0.6) 0%, rgba(49, 25, 73, 0.8) 100%);
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#mixer {
+  height: 4rem;
+}
+
+#pour {
+  font-family: 'road-rage', cursive;
+  border: 1px solid #fe7d68;
+  height: 5vw;
+  box-shadow: 1px 0px 30px 0px rgb(37, 6, 45);
+  color: #ffffff;
+  width: 100%;
+  font-size: 2.5vw;
+  background: rgb(249,46,144);
+  background: linear-gradient(180deg, rgb(249, 213, 2) 00%, rgb(249, 35, 145) 100%);
+  color: #ffffff;
+}
+
+#pour:focus {
+  outline: 0 !important;
+}
+
+#pour::-moz-focus-inner {
+  border: 0;
+}
+
+/* Slider config */
+.bg_transparent {
+  background: transparent !important;
+  border: 0 !important;
+  height: 112% !important;
+}
+.bg_transparent:focus {
+  outline: 0 !important;
+}
+
+.bg_transparent::-moz-focus-inner {
+  border: 0;
+}
+
+.slider-range {
+  background: linear-gradient(180deg, rgb(249, 213, 2) 00%, rgb(249, 35, 145) 100%) !important;
+  border: 0 !important;
+  filter: url(#glow);
+  -webkit-filter: url(#glow);
+  -moz-filter: url(#glow);
+  -o-filter: url(#blurFilter);
+  -ms-filter: url(#glow);
+}
+
+#hdl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); 
+  background: transparent;
+  text-align: center;
+  vertical-align: center;
+    
+}
+
+#hdl_img {
+  height: 6rem;
+}
+

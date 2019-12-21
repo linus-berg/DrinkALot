@@ -1,0 +1,66 @@
+body { 
+  background: linear-gradient(0deg, #070829 0%, #05092b 24%, #08092b 25%, #08092d 30%, #050a2b 32%, #070a2e 35%, #080e31 56%, #090f35 62%, #080f32 63%, #0b1036 64%, #0b0f36 69%, #0a1237 70%, #091136 73%, #0b173f 91%, #0b163c 96%) fixed;
+}
+
+@font-face {
+  font-family: abduction;
+  src: url(fonts/abduction2002.ttf);
+}
+
+@font-face {
+  font-family: outrun;
+  src: url(fonts/outrun.otf);
+}
+
+@font-face {
+  font-family: still-time;
+  src: url(fonts/stilltime.ttf);
+}
+
+@font-face {
+  font-family: road-rage;
+  src: url(fonts/Road_Rage.otf);
+}
+
+@font-face {
+  font-family: streamster;
+  src: url(fonts/Streamster.ttf);
+}
+
+@font-face {
+  font-family: Lazer84;
+  src: url(fonts/Lazer84.ttf);
+}
+
+.glow {
+  filter: url(#glow);
+  -webkit-filter: url(#glow);
+  -moz-filter: url(#glow);
+  -o-filter: url(#blurFilter);
+  -ms-filter: url(#glow);
+}
+
+#logo {
+  font-size: 3rem;
+}
+#year {
+  font-size: 2.5rem;
+}
+h1 { 
+  font-family: 'road-rage', cursive;
+  font-size: 2rem;
+  color: #FF6C11;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.yellow {
+  color: #F9C80E;
+}
+.red {
+  color: #FD1D53;
+}
+.blue {
+  color: #2DE2E6;
+}
+

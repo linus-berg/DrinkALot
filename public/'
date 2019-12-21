@@ -1,0 +1,66 @@
+$("#mixer").slider({
+  range: "min",
+  min: 0,
+  max: 100,
+  value: 50,
+  animate: "fast",
+  classes: {
+    "ui-slider": "ui-corner-all",
+    "ui-slider-handle": "bg_transparent",
+    "ui-slider-range": "slider-range",
+  }
+});
+
+noUiSlider.create(range, {
+
+    range: {
+        'min': 0,
+        'max': 100
+    },
+
+
+    // Display colored bars between handles
+    connect: true,
+
+    // Put '0' at the bottom of the slider
+    direction: 'rtl',
+    orientation: 'vertical',
+
+    // Move handle on tap, bars are draggable
+    behaviour: 'tap-drag',
+    tooltips: true,
+    format: wNumb({
+        decimals: 0
+    }),
+
+    // Show a scale with the slider
+    pips: {
+        mode: 'steps',
+        stepped: true,
+        density: 4
+    }
+});
+
+function StartPour() {
+  console.log('STARTED POURING');
+}
+
+function StopPour() {
+  console.log('STOPPED POURING');
+}
+
+$('.ui-slider-handle').append('<div id="hdl"></div>');
+$('#hdl').append('<img id="hdl_img" src="jack.png">');
+
+setInterval(function() {
+  $('#countdown').text(countdown(new Date(2020, 0, 1)).toString());
+}, 500);
+
+$('#pour').on('touchstart', function (evt) {
+  console.log('STARTED POURING');
+  evt.preventDefault();
+});
+$('#pour').on('touchend', function (evt) {
+  console.log('STOPPED POURING');
+  evt.preventDefault();
+});

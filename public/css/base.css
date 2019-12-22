@@ -1,7 +1,72 @@
-body { 
-  background: linear-gradient(0deg, #070829 0%, #05092b 24%, #08092b 25%, #08092d 30%, #050a2b 32%, #070a2e 35%, #080e31 56%, #090f35 62%, #080f32 63%, #0b1036 64%, #0b0f36 69%, #0a1237 70%, #091136 73%, #0b173f 91%, #0b163c 96%) fixed;
+html, body {
+  height: 100%;
+  overflow: hidden;
 }
 
+body {
+  text-align: center;
+  background: #111;
+  background: linear-gradient(#0c141f 40%, #cf33d9 41%, #0c141f 60%);
+}
+
+#inner-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 auto;
+  perspective: 180px;
+  perspective-origin: 50% 40%;
+}
+
+@keyframes moveUp{
+  0% {
+    background-position: -1px -1px, -1px -1px;
+  }
+  100% {
+    background-position: -50px -50px, -1px -1px;
+  }
+}
+@keyframes bypass{
+  0% {
+    background-position: 0% 100%;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 0;
+  }
+}
+
+.scroll {
+  position: absolute;
+  left: 45%;
+  width: 10%;
+  height: 130%;
+  background-image: url('/static/rick.png');
+  background-repeat: no-repeat;
+  background-size: 100px 40px;
+  background-position: 0% 100%;
+  transform: rotateX(85deg);
+  animation: bypass 5s linear;
+  animation-fill-mode: forwards;  
+  z-index: 12;
+}
+
+.landscape {
+  position: absolute;
+  width: 400%;
+  left: -180%;
+  height: 130%;
+  bottom: -30%;
+  background-image: linear-gradient(0deg, #CF33D9 2px, transparent 2px), linear-gradient(90deg, #CF33D9 2px, transparent 2px);
+  background-size: 50px 50px, 120px 120px;
+  background-position: -1px -1px, -1px -1px;
+  transform: rotateX(85deg);
+  animation: moveUp 1.5s infinite linear;
+  z-index: -99;
+}
 @font-face {
   font-family: abduction;
   src: url(fonts/abduction2002.ttf);
@@ -41,19 +106,27 @@ body {
 }
 
 #logo {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 #year {
-  font-size: 2.5rem;
+  font-size: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
-h1 { 
-  font-family: 'road-rage', cursive;
+.tex { 
+  font-family: 'road-rage';
   font-size: 2rem;
   color: #FF6C11;
   text-align: center;
-  margin: 0 auto;
-}
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
 
+}
+.white {
+  color: #f4f4f4;
+}
 .yellow {
   color: #F9C80E;
 }

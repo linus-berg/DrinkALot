@@ -22,19 +22,31 @@
   <script src="js/socket.io.js"></script>
 </head>
 <body>
-  <h1 id="logo" class="glow yellow">The GD Studio</h1>
-  <h1 id="year" class="glow red">2019</h1>
-  <h1 class="glow blue">New Years Party</h1>
-  <h1 id="countdown" class="glow"></h1>
   <div id="wrapper">
-    <div id="mixer_wrap">
-      <div id="mixer"></div>
-      <div id="controls">
-        <button id="pour" type="button">
-          POUR!
-        </button> 
+    <!-- Background loop -->
+    <div id="inner-wrapper">
+      <div class="landscape"></div>
+    </div>
+    <div id="tot-wrap">
+      <div id="upper">
+        <span id="logo" class="tex glow yellow">The GD Studio</span>
+        <span id="year" class="tex glow red">2 0 1 9</span>
+        <span class="tex glow blue">NEW YEARS PARTY</span>
+      </div>
+      
+      <div id="mixer_wrap">
+        <div id="mixer"></div>
+        <div id="controls">
+          <button id="pour" type="button">
+            POUR!
+          </button> 
+          <button id="roll" type="button">
+            ROLL!
+          </button> 
+        </div>
       </div>
     </div>
+
   </div>
   <script src="js/scripts.js"></script>
   <svg version="1.1"  xmlns="http://www.w3.org/2000/svg">

@@ -11,11 +11,11 @@ const PORT = 3000;
 app.use(express.static('./public'));
 
 socket.on('connection', function(client) {
-  client.on('POUR', function() {
-    console.log("POURING");
+  client.on('POUR', function(percent) {
+    console.log("POURING:" + percent + '%');
   });
 
-  client.on('STOP', function() {
+  client.on('STOP', function(percent) {
     console.log("STOPPING");
   });
 

@@ -6,16 +6,12 @@ html, body {
 body {
   text-align: center;
   background: #111;
-  background: linear-gradient(#0c141f 40%, #cf33d9 41%, #0c141f 60%);
 }
 
 #inner-wrapper {
   width: 100%;
   height: 100%;
   position: absolute;
-  margin: 0 auto;
-  perspective: 180px;
-  perspective-origin: 50% 40%;
 }
 
 @keyframes moveUp{
@@ -26,6 +22,7 @@ body {
     background-position: -50px -50px, -1px -1px;
   }
 }
+
 @keyframes bypass{
   0% {
     background-position: 0% 100%;
@@ -37,6 +34,16 @@ body {
     background-position: 0% 0%;
     opacity: 0;
   }
+}
+
+#bg {
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1000; 
+  overflow: hidden;
 }
 
 .scroll {
@@ -56,10 +63,10 @@ body {
 
 .landscape {
   position: absolute;
-  width: 400%;
-  left: -180%;
+  width: 500%;
+  left: -200%;
   height: 130%;
-  bottom: -30%;
+  bottom: -40%;
   background-image: linear-gradient(0deg, #CF33D9 2px, transparent 2px), linear-gradient(90deg, #CF33D9 2px, transparent 2px);
   background-size: 50px 50px, 120px 120px;
   background-position: -1px -1px, -1px -1px;
@@ -123,6 +130,9 @@ body {
   margin-bottom: 0;
   padding: 0;
 
+}
+.purple {
+  color: #791e94;
 }
 .white {
   color: #f4f4f4;

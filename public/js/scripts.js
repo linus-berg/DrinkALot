@@ -34,7 +34,7 @@ function Roll() {
 }
 
 $('.ui-slider-handle').append('<div id="hdl"></div>');
-$('#hdl').append('<img id="hdl_img" src="jack.png">');
+$('#hdl').append('<img id="hdl_img" src="img/smalljack-fs8.png">');
 
 setInterval(function() {
   $('#countdown').text(countdown(new Date(2020, 0, 1)).toString());

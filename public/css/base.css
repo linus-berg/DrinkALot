@@ -61,3 +61,8 @@ button {
   src: url(fonts/Lazer84.ttf);
 }
 
+@font-face {
+  font-family: indelible;
+  src: url(fonts/Indelible.otf);
+}
+

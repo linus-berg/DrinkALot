@@ -7,6 +7,8 @@ const pwm = require('raspi-pwm');
 const gpio = require('raspi-gpio');
 const winston = require('winston');
 
+const Pump = require('./classes/pump.js');
+
 var app = express();
 var srv = http.createServer(app);
 var socket = io(srv);
@@ -30,39 +32,18 @@ const logger = winston.createLogger({
   ]
 });
 
-var pumps = [];
-
-class Pump {
-  constructor(en, in1, in2) {
-    /* RPI pins */
-    this.en = en;
-    this.in1 = in1;
-    this.in2 = in2;
-    this.Stop(); 
-  }
-
-  Run(speed) {
-    this.en.write(speed);
-    this.in1.write(1);
-  }
-
-  Stop() {
-    this.en.write(0);
-    this.in1.write(0);
-    this.in2.write(0);
-  }
-}
 
 /* 
- * Motor A (RIGHT PIPE, LEFT SUCTION)
+ * Motor A(0) (RIGHT PIPE, LEFT SUCTION)
  * PWM: 12
  * IN1: 8
  * IN2: 40
- * Motor B (LEFT PIPE, RIGHT SUCTION)
+ * Motor B(1) (LEFT PIPE, RIGHT SUCTION)
  * PWM: 33
  * IN1: 16
  * IN2: 36
  */
+var pumps = [];
 raspi.init(() => {
   /* Right Pipe, Left Suction */
   pumps[0] = new Pump(new pwm.PWM('P1-12'), new gpio.DigitalOutput('P1-8'),
@@ -76,10 +57,9 @@ app.use(express.static('./public'));
 socket.on('connection', function(client) {
   client.on('POUR', function(percent) {
     const jack = percent / 100;
-    const coke = 1 - jack;
     pumps[0].Run(jack);
-    pumps[1].Run(coke);
-    logger.info('Pouring ' + jack * 100 + '% Jack with ' + coke * 100 + '% coke.');
+    pumps[1].Run(1 - jack);
+    logger.info('Pouring ' + percent + '% Jack with ' + 100 - percent + '% coke.');
   });
 
   client.on('STOP', function(percent) {

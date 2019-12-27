@@ -22,7 +22,7 @@ const logger = winston.createLogger({
     // - Write all logs error (and below) to `error.log`.
     //
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'info.log', level: 'info' }),
+    new winston.transports.File({ filename: 'info.log', level: 'info', timestamp: true}),
     new winston.transports.File({ filename: 'combined.log' })
   ]
 });
@@ -76,7 +76,7 @@ socket.on('connection', function(client) {
     const coke = 1 - jack;
     pumps[0].Run(jack);
     pumps[1].Run(coke);
-    logger.info('Pouring ' + jack + '% Jack with ' + coke + '% coke.');
+    logger.info('Pouring ' + jack * 100 + '% Jack with ' + coke * 100 + '% coke.');
   });
 
   client.on('STOP', function(percent) {

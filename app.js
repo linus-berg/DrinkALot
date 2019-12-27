@@ -67,7 +67,7 @@ raspi.init(() = > {
   /* Left Pipe, Right Suction */
   pumps[1] = new Pump(new pwm.PWM('P1-33'), new gpio.DigitalOutput('P1-16'),
                       new gpio.DigitalOutput('P1-36'))
-}
+});
 
 app.use(express.static('./public'));
 socket.on('connection', function(client) {

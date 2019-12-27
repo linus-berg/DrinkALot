@@ -14,7 +14,10 @@ const PORT = 3000;
 
 const logger = winston.createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
   defaultMeta: { service: 'user-service' },
   transports: [
     //
@@ -82,6 +85,7 @@ socket.on('connection', function(client) {
   client.on('STOP', function(percent) {
     pumps[0].Stop(); 
     pumps[1].Stop(); 
+    logger.info('Stopped Pouring');
   });
 
   client.on('disconnect', (reason) => console.log(reason));

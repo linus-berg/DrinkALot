@@ -8,32 +8,17 @@ body {
   background: #111;
 }
 
-#inner-wrapper {
+button {
+  font-family: 'road-rage', cursive;
+  border: 1px solid #fe7d68;
+  height: 5rem;
+  box-shadow: 1px 0px 30px 0px rgb(37, 6, 45);
+  color: #ffffff;
   width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-@keyframes moveUp{
-  0% {
-    background-position: -1px -1px, -1px -1px;
-  }
-  100% {
-    background-position: -50px -50px, -1px -1px;
-  }
-}
-
-@keyframes bypass{
-  0% {
-    background-position: 0% 100%;
-  }
-  99% {
-    opacity: 1;
-  }
-  100% {
-    background-position: 0% 0%;
-    opacity: 0;
-  }
+  font-size: 3rem;
+  background: rgb(249,46,144);
+  background: linear-gradient(180deg, rgb(249, 213, 2) 00%, rgb(249, 35, 145) 100%);
+  color: #ffffff;
 }
 
 #bg {
@@ -46,34 +31,6 @@ body {
   overflow: hidden;
 }
 
-.scroll {
-  position: absolute;
-  left: 45%;
-  width: 10%;
-  height: 130%;
-  background-image: url('/static/rick.png');
-  background-repeat: no-repeat;
-  background-size: 100px 40px;
-  background-position: 0% 100%;
-  transform: rotateX(85deg);
-  animation: bypass 5s linear;
-  animation-fill-mode: forwards;  
-  z-index: 12;
-}
-
-.landscape {
-  position: absolute;
-  width: 500%;
-  left: -200%;
-  height: 130%;
-  bottom: -40%;
-  background-image: linear-gradient(0deg, #CF33D9 2px, transparent 2px), linear-gradient(90deg, #CF33D9 2px, transparent 2px);
-  background-size: 50px 50px, 120px 120px;
-  background-position: -1px -1px, -1px -1px;
-  transform: rotateX(85deg);
-  animation: moveUp 1.5s infinite linear;
-  z-index: -99;
-}
 @font-face {
   font-family: abduction;
   src: url(fonts/abduction2002.ttf);
@@ -102,48 +59,5 @@ body {
 @font-face {
   font-family: Lazer84;
   src: url(fonts/Lazer84.ttf);
-}
-
-.glow {
-  filter: url(#glow);
-  -webkit-filter: url(#glow);
-  -moz-filter: url(#glow);
-  -o-filter: url(#blurFilter);
-  -ms-filter: url(#glow);
-}
-
-#logo {
-  font-size: 2rem;
-}
-#year {
-  font-size: 4rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-.tex { 
-  font-family: 'road-rage';
-  font-size: 2rem;
-  color: #FF6C11;
-  text-align: center;
-  margin-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
-
-}
-.purple {
-  color: #791e94;
-}
-.white {
-  color: #f4f4f4;
-}
-.yellow {
-  color: #F9C80E;
-}
-.red {
-  color: #FD1D53;
-}
-.blue {
-  color: #2DE2E6;
 }
 

@@ -35,11 +35,11 @@ class Pump {
     this.en = en;
     this.in1 = in1;
     this.in2 = in2;
-    Stop(); 
+    this.Stop(); 
   }
 
   Run(speed) {
-    this.en.write((percent/100));
+    this.en.write(speed);
     this.in1.write(1);
   }
 

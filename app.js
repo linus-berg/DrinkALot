@@ -60,7 +60,7 @@ class Pump {
  * IN1: 16
  * IN2: 36
  */
-raspi.init(() = > {
+raspi.init(() => {
   /* Right Pipe, Left Suction */
   pumps[0] = new Pump(new pwm.PWM('P1-12'), new gpio.DigitalOutput('P1-8'),
                       new gpio.DigitalOutput('P1-40'));

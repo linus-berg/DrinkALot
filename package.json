@@ -1,0 +1,28 @@
+{
+  "name": "drinkalot",
+  "version": "1.0.0",
+  "description": "JACK AND COKE",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "raspi": "*",
+    "raspi-gpio": "*",
+    "raspi-pwm": "*",
+    "socket.io": "^2.3.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linus-berg/DrinkALot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linus-berg/DrinkALot/issues"
+  },
+  "homepage": "https://github.com/linus-berg/DrinkALot#readme"
+}

@@ -1,40 +1,33 @@
-$("#mixer").slider({
-  range: "min",
+const slider_id = '#mixer-slider';
+$(slider_id).slider({
+  range: 'min',
   min: 0,
   max: 100,
   value: 50,
   animate: 400,
   classes: {
-    "ui-slider": "ui-corner-all",
-    "ui-slider-handle": "bg_transparent",
-    "ui-slider-range": "slider-range",
+    'ui-slider': 'ui-corner-all',
+    'ui-slider-handle': 'default-hdl',
+    'ui-slider-range': 'slider-colour-gradient',
   }
 });
 
-//$('.ui-slider-handle').draggable();
 var socket = io();
 
 function StartPour() {
-  console.log('STARTED POURING');
-  socket.emit('POUR', $('#mixer').slider('value'));
+  socket.emit('POUR', $(slider_id).slider('value'));
 }
 
 function StopPour() {
-  console.log('STOPPED POURING');
   socket.emit('STOP');
 }
+
 function Roll() {
-  $('#mixer').slider('value', Math.random() * 100);
-  var audio = new Audio('pickle_rick.mp3');
-  //audio.play();
-  //$('#inner-wrapper').append('<div class="scroll">test</div>');
-  //$('.rnd').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function(e) {
-  // $(this).remove();
-  //});
+  $(slider_id).slider('value', Math.random() * 100);
 }
 
-$('.ui-slider-handle').append('<div id="hdl"></div>');
-$('#hdl').append('<img id="hdl_img" src="img/smalljack-fs8.png">');
+$('.ui-slider-handle').append('<div id="mixer-slider-hdl"></div>');
+$('#mixer-slider-hdl').append('<img id="mixer-slider-hdl-img" src="img/smalljack-fs8.png">');
 
 setInterval(function() {
   $('#countdown').text(countdown(new Date(2020, 0, 1)).toString());

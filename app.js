@@ -59,7 +59,7 @@ socket.on('connection', function(client) {
     const jack = percent / 100;
     pumps[0].Run(jack);
     pumps[1].Run(1 - jack);
-    logger.info('Pouring ' + percent + '% Jack with ' + 100 - percent + '% coke.');
+    logger.info('Pouring ' + percent + '% Jack with ' + (100 - percent) + '% coke.');
   });
 
   client.on('STOP', function(percent) {

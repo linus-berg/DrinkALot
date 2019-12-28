@@ -31,7 +31,8 @@ class DrinkLog {
           measurement: 'drink_mix',
           fields: {
             mix: Influx.FieldType.FLOAT,
-            duration: Influx.FieldType.FLOAT
+            start: Influx.FieldType.TIMESTAMP,
+            end: Influx.FieldType.TIMESTAMP
           },
           tags: []
         }
@@ -78,7 +79,8 @@ class DrinkLog {
         measurement: 'drink_mix',
         fields: {
           mix: this.mix_,
-          duration: duration
+          start: this.source_time_,
+          end: new Date().getTime()
         },
       }
     ]).catch(err => {

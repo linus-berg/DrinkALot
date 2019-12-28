@@ -58,7 +58,7 @@ class DrinkLog {
       return false;
     }
 
-    this.winston_.info(`Pouring ${mix_}%J/${100 - mix}%C`);
+    this.winston_.info(`Pouring ${mix}%J/${100 - mix}%C`);
    
     this.source_time_ = new Date().getTime();
     this.mix_ = mix;  

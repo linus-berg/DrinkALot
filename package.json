@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
+    "influx": "^5.5.1",
     "raspi": "*",
     "raspi-gpio": "*",
     "raspi-pwm": "*",

@@ -2,35 +2,19 @@
 const express = require('express');
 const io = require('socket.io');
 const http = require('http');
+
+/* Raspi Comms */
 const raspi = require('raspi');
 const pwm = require('raspi-pwm');
 const gpio = require('raspi-gpio');
-const winston = require('winston');
 
 const Pump = require('./classes/pump.js');
+const Logger = require('./classes/logging.js');
 
 var app = express();
 var srv = http.createServer(app);
 var socket = io(srv);
 const PORT = 3000;
-
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-  defaultMeta: { service: 'user-service' },
-  transports: [
-    //
-    // - Write to all logs with level `info` and below to `combined.log` 
-    // - Write all logs error (and below) to `error.log`.
-    //
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'info.log', level: 'info', timestamp: true}),
-  ]
-});
-
 
 /* 
  * Motor A(0) (RIGHT PIPE, LEFT SUCTION)
@@ -53,22 +37,24 @@ raspi.init(() => {
 });
 
 app.use(express.static('./public'));
+app.use(require('./routes/health.js')(pumps[0], pumps[1]));
+
 socket.on('connection', function(client) {
-  client.on('POUR', function(percent) {
-    const jack = percent / 100;
+  client.on('POUR', function(mix) {
+    const jack = mix / 100;
     pumps[0].Run(jack);
     pumps[1].Run(1 - jack);
-    logger.info('Pouring ' + percent + '% Jack with ' + (100 - percent) + '% coke.');
+    Logger.SourceLog(mix);
   });
 
   client.on('STOP', function(percent) {
     pumps[0].Stop(); 
     pumps[1].Stop(); 
-    logger.info('Stopped Pouring');
+    Logger.SinkLog();
   });
 
   client.on('disconnect', (reason) => console.log(reason));
-})
+});
 
 srv.listen(PORT, function(){
   console.log('Server started on *:' + PORT);

@@ -17,6 +17,14 @@ class Pump {
     this.in1.write(0);
     this.in2.write(0);
   }
+
+  GetStatus() {
+    return {
+      pwm: this.en.value(),
+      in1: this.in1.value(),
+      in2: this.in2.value()
+    }
+  }
 }
 
 module.exports = Pump;

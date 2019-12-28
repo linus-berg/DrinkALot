@@ -14,7 +14,7 @@ const Logger = require('./classes/logging.js');
 var app = express();
 var srv = http.createServer(app);
 var socket = io(srv);
-const PORT = 3000;
+const PORT = 3030;
 
 /* 
  * Motor A(0) (RIGHT PIPE, LEFT SUCTION)

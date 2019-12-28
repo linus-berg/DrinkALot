@@ -30,9 +30,7 @@ class DrinkLog {
         {
           measurement: 'drink_mix',
           fields: {
-            mix: Influx.FieldType.FLOAT,
-            start: Influx.FieldType.TIMESTAMP,
-            end: Influx.FieldType.TIMESTAMP
+            mix: Influx.FieldType.FLOAT
           },
           tags: []
         }
@@ -50,7 +48,6 @@ class DrinkLog {
     this.sourced_ = false;
     /* Duration timer. */
     this.source_time_ = 0;
-    this.mix_ = 0;
   }
   
   /* For accurate logging Source must be called before Sink... */
@@ -60,9 +57,8 @@ class DrinkLog {
     }
 
     this.winston_.info(`Pouring ${mix}%J/${100 - mix}%C`);
-   
+    this.WriteInflux(mix); 
     this.source_time_ = new Date().getTime();
-    this.mix_ = mix;  
     this.sourced_ = true;
     return true;
   }
@@ -74,25 +70,23 @@ class DrinkLog {
     
     const duration = new Date().getTime() - this.source_time_;
     this.winston_.info(`Stopped pouring, duration: ${duration}`);
+    this.WriteInflux(0); 
+    this.source_time_ = 0;
+    this.sourced_ = false; 
+    return true;
+  }
+  WriteInflux(mix) {
     this.influx_.writePoints([
       {
         measurement: 'drink_mix',
         fields: {
-          mix: this.mix_,
-          start: this.source_time_,
-          end: new Date().getTime()
+          mix: mix
         },
       }
     ]).catch(err => {
       this.winston.error(`Error saving data to InfluxDB! ${err.stack}`)
     });
-    
-    this.source_time_ = 0;
-    this.mix_ = 0;
-    this.sourced_ = false; 
-    return true;
   }
-
 }
 
 module.exports = new DrinkLog();

@@ -27,7 +27,7 @@ function Roll() {
 }
 
 $('.ui-slider-handle').append('<div id="mixer-slider-hdl"></div>');
-$('#mixer-slider-hdl').append('<img id="mixer-slider-hdl-img" src="img/smalljack-fs8.png">');
+$('#mixer-slider-hdl').append('<img id="mixer-slider-hdl-img" src="img/gin_small.png">');
 
 setInterval(function() {
   $('#countdown').text(countdown(new Date(2020, 0, 1)).toString());
